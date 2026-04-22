@@ -10,14 +10,7 @@ import {
 import TemplateCard from '../shared/TemplateCard';
 import RankingModal from 'components/ranking-modal/RankModal';
 
-const CATEGORY_COLORS = {
-    Music: "#534AB7",
-    Animals: "#378ADD",
-    Food: "#E24B4A",
-    Events: "#EF9F27",
-};
-
-const DEFAULT_COLOR = "#FF7F7F";
+const ACCENT = '#FF7F7F';
 
 export default function ExplorePage() {
     const { SERVER_URL } = useApi();
@@ -70,7 +63,7 @@ export default function ExplorePage() {
     if (loading) {
         return (
             <Box display="flex" justifyContent="center" mt={8}>
-                <CircularProgress sx={{ color: DEFAULT_COLOR }} />
+                <CircularProgress sx={{ color: ACCENT }} />
             </Box>
         );
     }
@@ -124,7 +117,6 @@ export default function ExplorePage() {
 
                     {categories.map((cat) => {
                         const isActive = activeCategories.has(cat);
-                        const color = CATEGORY_COLORS[cat] ?? DEFAULT_COLOR;
 
                         return (
                             <Chip
@@ -133,14 +125,14 @@ export default function ExplorePage() {
                                 onClick={() => toggleCategory(cat)}
                                 variant={isActive ? 'filled' : 'outlined'}
                                 sx={{
-                                    borderColor: isActive ? color : '#d1d5db',
-                                    backgroundColor: isActive ? color : 'transparent',
+                                    borderColor: isActive ? ACCENT : '#d1d5db',
+                                    backgroundColor: isActive ? ACCENT : 'transparent',
                                     color: isActive ? '#fff' : '#111827',
                                     fontWeight: 600,
                                     '&:hover': {
-                                        backgroundColor: isActive ? color : 'transparent',
-                                        borderColor: color,
-                                        color: isActive ? '#fff' : color,
+                                        backgroundColor: isActive ? ACCENT : 'transparent',
+                                        borderColor: ACCENT,
+                                        color: isActive ? '#fff' : ACCENT,
                                     },
                                 }}
                             />
@@ -152,7 +144,7 @@ export default function ExplorePage() {
                             sx={{
                                 fontSize: '12px',
                                 fontWeight: 600,
-                                color: DEFAULT_COLOR,
+                                color: ACCENT,
                                 cursor: 'pointer',
                                 textDecoration: 'underline',
                                 ml: 1,
